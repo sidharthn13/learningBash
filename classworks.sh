@@ -1,11 +1,16 @@
-echo "please enter the first number"
-declare -i num1
-read num1
-echo "please enter the second number"
-declare -i num2
-read num2
-if (($(($((num1 * num2))%2)) == 0)); then
- echo "the product is even"
-else
- echo "the product is odd"
-fi
+checkIfMultiple() {
+    if [ $2 -eq 0 ]; then
+    echo "error: cannot divide by 0"
+    return 1
+    fi
+    if (( $1%$2 == 0 )); then
+    echo "$1 is a multiple of $2"
+    return 0
+    else 
+    echo "$1 is not a multiple of $2"
+    return 1
+    fi
+}
+
+checkIfMultiple 11 5
+echo $?
