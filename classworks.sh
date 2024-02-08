@@ -1,12 +1,19 @@
 #!/bin/bash
-checkRightAngled() {
-    declare -i s1=$1
-    declare -i s2=$2
-    declare -i s3=$3
-    if (( $s1 * $s1 + $s2 * $s2==$s3 * $s3)); then
-        echo "it is a right angled triangle"
-    else
-        echo "it is not a right angled triangle"
+printGreatestSmallest() {
+    if (($# == 0)); then
+        echo "no arguments received"
+        return
     fi
+    declare -i smallest=$1
+    declare -i largest=$2
+    for val in $@; do
+        if (($val <= $smallest)); then
+            smallest=$val
+        fi
+        if (($val>=$largest)); then
+            largest=$val
+        fi
+    done
+    echo -e "the smallest among the input is : $smallest\nthe largest among the input is : $largest"
 }
-checkRightAngled 4 3 5
+printGreatestSmallest 4 2
