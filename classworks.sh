@@ -1,19 +1,12 @@
-#!/usr/bin/bash
-palindromeCheck() {
-    declare -i num
-    echo "enter a number: "
-    read num
-    result=0
-    numDupe=$num
-    while (( $numDupe!=0 )); do
-        onesPlace=$(($numDupe%10))
-        result=$(($result*10+$onesPlace))
-        numDupe=$(($numDupe/10))
-    done
-    if (($result==$num)); then
-        echo "it is a palindrome"
+#!/bin/bash
+checkRightAngled() {
+    declare -i s1=$1
+    declare -i s2=$2
+    declare -i s3=$3
+    if (( $s1 * $s1 + $s2 * $s2==$s3 * $s3)); then
+        echo "it is a right angled triangle"
     else
-        echo "it is not a palindrome"
+        echo "it is not a right angled triangle"
     fi
 }
-palindromeCheck
+checkRightAngled 4 3 5
